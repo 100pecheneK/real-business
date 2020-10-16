@@ -3,10 +3,10 @@ import {motion} from 'framer-motion'
 import Link from 'next/link'
 
 
-export default function AnimatedLink({href, delay = 0, children}) {
+export default function AnimatedLink({href, delay = 0, children, classes}) {
   return (
     <Link href={href}>
-      <motion.a className={styles.card}
+      <motion.a className={`${styles.card} ${classes}`}
                 initial="hidden" animate="visible" variants={{
         hidden: {
           scale: .8,
