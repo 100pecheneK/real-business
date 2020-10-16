@@ -29,7 +29,7 @@ export default function Home() {
 
           <div className={styles.grid}>
             <AnimatedLink href={'/one'} delay={1.2} classes={styles.active}>
-              <h3>Бизнеса &rarr;</h3>
+              <h3>Бизнес &rarr;</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
             </AnimatedLink>
             <AnimatedLink href={'/two'} delay={1.4}>
