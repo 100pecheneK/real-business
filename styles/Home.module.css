@@ -256,3 +256,8 @@
         background-position: 100% 50%;
     }
 }
+
+.darkMode {
+    filter: invert(100%);
+    background-color: black;
+}

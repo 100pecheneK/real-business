@@ -1,11 +1,20 @@
 import '../styles/globals.css'
 import styles from '../styles/Home.module.css'
+import useDarkMode from 'use-dark-mode'
+
 
 function MyApp({Component, pageProps}) {
+  const darkMode = useDarkMode(false)
   return (
     <>
       <Component {...pageProps} />
       <footer className={styles.footer}>
+        <button type="button" onClick={darkMode.disable}>
+          ☀
+        </button>
+        <button type="button" onClick={darkMode.enable}>
+          ☾
+        </button>
         <a
           href="https://github.com/100pecheneK"
           target="_blank"
