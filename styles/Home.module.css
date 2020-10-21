@@ -46,9 +46,9 @@
 }
 
 .title {
+    font-size: clamp(2rem, 4.5vw, 4rem);
     margin: 0;
     line-height: 1.15;
-    font-size: 4rem;
 }
 
 .title,
@@ -161,7 +161,7 @@
     }
 }
 
-.btn, .btn:focus {
+.btn, .btn:focus, .btn:active {
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 7px;
