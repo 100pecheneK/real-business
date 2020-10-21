@@ -1,9 +1,9 @@
 import styles from '../styles/Home.module.css'
-import Head from 'next/head'
-import AnimatedLink from '../components/AnimatedLink'
-import SecondPage from '../components/SecondPage'
-import LayoutPage from '../components/LayoutPage'
+import AnimatedLink from '../containers/AnimatedLink'
+import SecondPage from '../containers/SecondPage'
+import LayoutPage from '../containers/LayoutPage'
 import React from 'react'
+import OneForm from '../forms/OneForm'
 
 
 export default function One() {
@@ -12,15 +12,14 @@ export default function One() {
       <LayoutPage title={'Бизнес'}>
         <main className={styles.main}>
           <h1 className={styles.title}>
-            One
+            Сумма двух чисел
           </h1>
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis consectetur
-            consequatur incidunt maxime minima numquam odit perferendis quam voluptate voluptatibus.
-            Deleniti earum eos error hic natus optio ullam vero voluptate.
+            Сложите два числа, чтобы узнать их сумму. Это позволит вам узнать сумму двух числел без каких либо трудностей!
           </p>
+          <OneForm/>
           <AnimatedLink href={'/'}>
-            <h3 style={{margin: 0}}>Go back &larr;</h3>
+            <h3 style={{margin: 0}}>Назад &larr;</h3>
           </AnimatedLink>
 
         </main>
