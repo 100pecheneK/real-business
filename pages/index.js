@@ -77,7 +77,7 @@ export default function Home() {
             {otherLinks.map((link, i) => {
               const delay = getDelay(2, i)
               return (
-                <AnimatedLink href={link.href} delay={delay}>
+                <AnimatedLink key={i} href={link.href} delay={delay}>
                   <h3>{link.h3} &rarr;</h3>
                   <p>{link.p}</p>
                 </AnimatedLink>
