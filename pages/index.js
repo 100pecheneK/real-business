@@ -39,7 +39,7 @@ function getDelay(initial, i) {
 
 export default function Home() {
   return (
-    <MainPage>
+    <MainPage pageKey={'Home'}>
       <LayoutPage>
         <main className={styles.main}>
           <OpacityDiv>

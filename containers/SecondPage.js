@@ -1,4 +1,5 @@
 import {AnimatePresence, motion} from 'framer-motion'
+import {variants} from './MainPage'
 
 
 export default function SecondPage({children, pageKey}) {
@@ -6,9 +7,14 @@ export default function SecondPage({children, pageKey}) {
     <AnimatePresence>
       <motion.div
         key={pageKey}
-        initial={{x: '100%'}}
-        animate={{x: '0%', transition: '1s'}}
-        exit={{x: '100%', transition: '1s'}}
+        variants={variants}
+        initial="exit"
+        animate="center"
+        exit="enter"
+        transition={{
+          x: {type: 'spring', stiffness: 300, damping: 30},
+          opacity: {duration: 0.2}
+        }}
       >
         {children}
       </motion.div>
