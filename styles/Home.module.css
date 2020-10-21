@@ -23,6 +23,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.modeToggle {
+    margin-top: 1em;
 }
 
 .footer img {

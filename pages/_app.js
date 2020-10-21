@@ -1,20 +1,17 @@
 import '../styles/globals.css'
 import styles from '../styles/Home.module.css'
 import useDarkMode from 'use-dark-mode'
+import ToggleButton from 'react-toggle-button'
+import {useState} from 'react'
 
 
 function MyApp({Component, pageProps}) {
   const darkMode = useDarkMode(false)
+  const [toggleValue, setToggleValue] = useState(false)
   return (
     <>
       <Component {...pageProps} />
       <footer className={styles.footer}>
-        <button type="button" onClick={darkMode.disable}>
-          ☀
-        </button>
-        <button type="button" onClick={darkMode.enable}>
-          ☾
-        </button>
         <a
           href="https://github.com/100pecheneK"
           target="_blank"
@@ -29,6 +26,35 @@ function MyApp({Component, pageProps}) {
               fill="#212121"/>
           </svg>
         </a>
+        <div className={styles.modeToggle}>
+          <ToggleButton
+            value={toggleValue}
+            inactiveLabel={'☾'}
+            activeLabel={'☀'}
+            thumbStyle={{borderRadius: 7}}
+            trackStyle={{borderRadius: 7}}
+            onToggle={() => {
+              darkMode.toggle()
+              setToggleValue(prev => !prev)
+            }}
+            colors={{
+              activeThumb: {
+                base: 'rgb(250,250,250)',
+              },
+              inactiveThumb: {
+                base: 'rgb(62,130,247)',
+              },
+              active: {
+                base: 'rgb(0, 112, 243)',
+                hover: 'rgb(42, 132, 255)',
+              },
+              inactive: {
+                base: 'rgb(65,66,68)',
+                hover: 'rgb(95,96,98)',
+              }
+            }}
+          />
+        </div>
       </footer>
     </>
   )

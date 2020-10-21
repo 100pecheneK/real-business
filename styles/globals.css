@@ -16,11 +16,11 @@ a {
 }
 
 body.light-mode {
-    transition: filter 0.3s ease;
+    transition: 1s ease;
 }
 
 body.dark-mode {
-    background-color: black;
+    background-color: #1b1b1b;
     filter: invert(100%);
-    transition: filter 1s ease;
+    transition: 1s ease;
 }
