@@ -23,7 +23,7 @@ function Form({setResult, form, result, onInputChange, onInputClear}) {
                placeholder={'Введите число 2'} onChange={onInputChange}
                value={form.number_2}/>
         <div className={styles['form-submit']}>
-          <button className={styles.btn} onClick={onInputClear}>Отчистить</button>
+          <button className={styles.btn} onClick={onInputClear}>Очистить</button>
           <button className={styles.btn + ' ' + styles.active} onClick={onSubmit}>Рассчитать
           </button>
         </div>
