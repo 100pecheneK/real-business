@@ -1,13 +1,41 @@
-import React, {useEffect, useState} from 'react'
-import Head from 'next/head'
+import React from 'react'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import AnimatedLink from '../components/AnimatedLink'
-import OpacityDiv from '../components/OpacityDiv'
-import MainPage from '../components/MainPage'
-import {motion} from 'framer-motion'
-import LayoutPage from '../components/LayoutPage'
+import AnimatedLink from '../containers/AnimatedLink'
+import OpacityDiv from '../containers/OpacityDiv'
+import MainPage from '../containers/MainPage'
+import LayoutPage from '../containers/LayoutPage'
 
+
+const otherLinks = [
+  {
+    href: '/one',
+    h3: 'Сложение',
+    p: 'Сложите два числа, чтобы узнать их сумму!'
+  },
+  {
+    href: '/one',
+    h3: 'Сложение',
+    p: 'Сложите два числа, чтобы узнать их сумму!'
+  },
+  {
+    href: '/one',
+    h3: 'Сложение',
+    p: 'Сложите два числа, чтобы узнать их сумму!'
+  },
+  {
+    href: '/one',
+    h3: 'Сложение',
+    p: 'Сложите два числа, чтобы узнать их сумму!'
+  },
+]
+
+function getDelay(initial, i) {
+  let delay = initial
+  if (i !== 0) {
+    delay += i * 0.2
+  }
+  return delay
+}
 
 export default function Home() {
   return (
@@ -23,18 +51,19 @@ export default function Home() {
 
           <OpacityDiv delay={1}>
             <p className={styles.description}>
-              Начни улучшать свой бизнес уже сегодня! <br/> Рассчетай рентабельность бизнеса или получи полный отчёт!
+              Начни улучшать свой бизнес уже сегодня! <br/> Рассчетай рентабельность бизнеса или
+              получи полный отчёт!
             </p>
           </OpacityDiv>
 
           <div className={styles.grid}>
             <AnimatedLink href={'/one'} delay={1.2} classes={styles.active}>
-              <h3>Бизнеса &rarr;</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
+              <h3>Бизнес &rarr;</h3>
+              <p>Рассчёт рентабельности Вашего бизнеса</p>
             </AnimatedLink>
             <AnimatedLink href={'/two'} delay={1.4}>
               <h3>Полный отчёт &rarr;</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
+              <p>Детальный рассчёт ренатабельностей</p>
             </AnimatedLink>
           </div>
 
@@ -45,22 +74,15 @@ export default function Home() {
           </OpacityDiv>
 
           <div className={styles.grid}>
-            <AnimatedLink href={'/one'} delay={2}>
-              <h3>One &rarr;</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
-            </AnimatedLink>
-            <AnimatedLink href={'/two'} delay={2.2}>
-              <h3>Two &rarr;</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
-            </AnimatedLink>
-            <AnimatedLink href={'/three'} delay={2.4}>
-              <h3>Three &rarr;</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
-            </AnimatedLink>
-            <AnimatedLink href={'/four'} delay={2.6}>
-              <h3>Four &rarr;</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, omnis!</p>
-            </AnimatedLink>
+            {otherLinks.map((link, i) => {
+              const delay = getDelay(2, i)
+              return (
+                <AnimatedLink href={link.href} delay={delay}>
+                  <h3>{link.h3} &rarr;</h3>
+                  <p>{link.p}</p>
+                </AnimatedLink>
+              )
+            })}
           </div>
         </main>
       </LayoutPage>
