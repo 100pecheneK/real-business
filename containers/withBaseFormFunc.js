@@ -6,7 +6,10 @@ export default function withBaseFormFunc(Form, data) {
     const [result, setResult] = useState(data.result)
     const [form, setForm] = useState(data.initialFormValues)
     const onInputChange = (e) => {
-      setForm({...form, [e.target.name]: e.target.value})
+      const value = +e.target.value
+      if (!isNaN(value)) {
+        setForm({...form, [e.target.name]: value})
+      }
     }
     const onInputClear = () => {
       setForm(data.initialFormValues)

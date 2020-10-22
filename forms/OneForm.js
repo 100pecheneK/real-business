@@ -10,7 +10,9 @@ function getRes(num_1, num_2) {
 
 function Form({setResult, form, result, onInputChange, onInputClear}) {
   const onSubmit = () => {
-    setResult(getRes(+form.number_1, +form.number_2))
+    const num_1 = +form.number_1
+    const num_2 = +form.number_2
+    setResult(getRes(num_1, num_2))
   }
   const onEnterPress = useEnterPress(onSubmit)
   return (
