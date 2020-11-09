@@ -4,32 +4,12 @@ import AnimatedLink from '../containers/AnimatedLink'
 import OpacityDiv from '../containers/OpacityDiv'
 import MainPage from '../containers/MainPage'
 import LayoutPage from '../containers/LayoutPage'
+import formulaCollection from '../buisness'
 
+const mainLinks = formulaCollection.getMainFormulasMetaData()
+const otherLinks = formulaCollection.getSecondaryFormulasMetaData()
 
-const otherLinks = [
-  {
-    href: '/one',
-    h3: 'Сложение',
-    p: 'Сложите два числа, чтобы узнать их сумму!'
-  },
-  {
-    href: '/one',
-    h3: 'Сложение',
-    p: 'Сложите два числа, чтобы узнать их сумму!'
-  },
-  {
-    href: '/one',
-    h3: 'Сложение',
-    p: 'Сложите два числа, чтобы узнать их сумму!'
-  },
-  {
-    href: '/one',
-    h3: 'Сложение',
-    p: 'Сложите два числа, чтобы узнать их сумму!'
-  },
-]
-
-function getDelay(initial, i) {
+function getDelayByPosition(initial, i) {
   let delay = initial
   if (i !== 0) {
     delay += i * 0.2
@@ -37,7 +17,7 @@ function getDelay(initial, i) {
   return delay
 }
 
-export default function Home() {
+export default function Home({ DELAY }) {
   return (
     <MainPage pageKey={'Home'}>
       <LayoutPage>
@@ -49,37 +29,44 @@ export default function Home() {
             </h1>
           </OpacityDiv>
 
-          <OpacityDiv delay={1}>
+          <OpacityDiv delay={DELAY.description}>
             <p className={styles.description}>
-              Начни улучшать свой бизнес уже сегодня! <br/> Рассчетай рентабельность бизнеса или
-              получи полный отчёт!
+              Начни улучшать свой бизнес уже сегодня! <br /> Рассчетай
+              рентабельность бизнеса или получи полный отчёт!
             </p>
           </OpacityDiv>
 
           <div className={styles.grid}>
-            <AnimatedLink href={'/one'} delay={1.2} classes={styles.active}>
-              <h3>Бизнес &rarr;</h3>
-              <p>Рассчёт рентабельности Вашего бизнеса</p>
-            </AnimatedLink>
-            <AnimatedLink href={'/two'} delay={1.4}>
+            {mainLinks.map((link, i) => {
+              return (
+                <AnimatedLink
+                  key={i}
+                  href={link.href}
+                  delay={DELAY.mainCard1}
+                  classes={styles.active}
+                >
+                  <h3>{link.name} &rarr;</h3>
+                  <p>{link.description}</p>
+                </AnimatedLink>
+              )
+            })}
+            <AnimatedLink href={'/all'} delay={DELAY.mainCard2}>
               <h3>Полный отчёт &rarr;</h3>
               <p>Детальный рассчёт ренатабельностей</p>
             </AnimatedLink>
           </div>
 
-          <OpacityDiv delay={1.8}>
-            <p className={styles.description}>
-              Или рассчитай по отдельности!
-            </p>
+          <OpacityDiv delay={DELAY.description2}>
+            <p className={styles.description}>Или рассчитай по отдельности!</p>
           </OpacityDiv>
 
           <div className={styles.grid}>
             {otherLinks.map((link, i) => {
-              const delay = getDelay(2, i)
+              const delay = getDelayByPosition(DELAY.cards, i)
               return (
                 <AnimatedLink key={i} href={link.href} delay={delay}>
-                  <h3>{link.h3} &rarr;</h3>
-                  <p>{link.p}</p>
+                  <h3>{link.name} &rarr;</h3>
+                  <p>{link.description}</p>
                 </AnimatedLink>
               )
             })}
