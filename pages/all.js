@@ -13,8 +13,8 @@ for (const formulaName in formulaCollection.formuls) {
 export default function All() {
   return (
     <UniversalFormulaForm
-      header={'Сумма и разница'}
-      description={'Введите 4 числа'}
+      header={'Полный отчет'}
+      description={'Получите полный отчет'}
       fields={fields}
       options={{ pageKey: 'All', title: 'Все' }}
     />

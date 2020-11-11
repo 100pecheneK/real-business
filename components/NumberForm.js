@@ -1,21 +1,22 @@
-import {useCallback, useEffect, useState} from 'react'
-import {NumberInput} from './Input'
-
+import { useCallback, useEffect, useState } from 'react'
+import { NumberInput } from './Input'
+import styles from './NumberForm.module.css'
 
 export default function NumberForm({
-                                     formulaName,
-                                     fields,
-                                     onSubmit,
-                                     isSubmitted,
-                                     setIsSubmitted,
-                                     setIsCleared,
-                                     isCleared
-                                   }) {
-  const [inputsValues, setInputsValues] = useState({[formulaName]: {}})
+  formulaName,
+  fields,
+  onSubmit,
+  isSubmitted,
+  setIsSubmitted,
+  setIsCleared,
+  isCleared,
+  formulaTitle,
+}) {
+  const [inputsValues, setInputsValues] = useState({ [formulaName]: {} })
 
   const _onClear = useCallback(() => {
-    setInputsValues({[formulaName]: {}})
-    onSubmit({[formulaName]: {}})
+    setInputsValues({ [formulaName]: {} })
+    onSubmit({ [formulaName]: {} })
   }, [setInputsValues, onSubmit, formulaName])
 
   useEffect(() => {
@@ -32,21 +33,17 @@ export default function NumberForm({
     }
   }, [isCleared, setIsCleared, _onClear, inputsValues])
 
-  const _onSubmit = () => {
-    onSubmit(inputsValues)
-  }
-
-  const _onNumberInputChange = ({name, value}) => {
-    setInputsValues((prevInputsValues) => ({
+  const _onNumberInputChange = ({ name, value }) => {
+    setInputsValues(prevInputsValues => ({
       [formulaName]: {
         ...prevInputsValues[formulaName],
-        [name]: value
-      }
+        [name]: value,
+      },
     }))
   }
-
   return (
-    <>
+    <div className={styles.formula}>
+      <h2>{formulaTitle}</h2>
       {fields.map((field, key) => (
         <NumberInput
           key={field.name + key}
@@ -57,6 +54,6 @@ export default function NumberForm({
           label={field.label}
         />
       ))}
-    </>
+    </div>
   )
 }

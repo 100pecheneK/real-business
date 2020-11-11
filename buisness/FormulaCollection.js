@@ -13,37 +13,21 @@ export default class FormulaCollection {
     return Formula
   }
 
-  getMainFormulas() {
-    const mainFormulas = {}
+  getFormulasByStatus(status) {
+    if (!STATUS[status]) {
+      throw new Error('Formula with status "' + status + '" not found')
+    }
+    const formulas = []
+
     for (const name in this.formuls) {
       if (this.formuls.hasOwnProperty(name)) {
         const _F = this.getFormulaByName(name)
-        if (_F._status === STATUS.MAIN) {
-          mainFormulas[name] = _F
+        if (_F._status === STATUS[status]) {
+          formulas.push(_F)
         }
       }
     }
-    return mainFormulas
-  }
-  getSecondaryFormulas() {
-    const secondaryFormulas = {}
-    for (const name in this.formuls) {
-      if (this.formuls.hasOwnProperty(name)) {
-        const _F = this.getFormulaByName(name)
-        if (_F._status === STATUS.SECONDARY) {
-          secondaryFormulas[name] = _F
-        }
-      }
-    }
-    return secondaryFormulas
-  }
-  getMainFormulasMetaData() {
-    const formulas = this.getMainFormulas()
-    return this.getFormulsMetaData(formulas)
-  }
-  getSecondaryFormulasMetaData() {
-    const formulas = this.getSecondaryFormulas()
-    return this.getFormulsMetaData(formulas)
+    return formulas
   }
 
   getFormulsMetaData(formuls) {
