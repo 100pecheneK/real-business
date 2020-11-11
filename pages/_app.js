@@ -12,6 +12,7 @@ let initialDelays = {
   mainCard2: 1.4,
   description2: 1.8,
   cards: 2,
+  bonus: 0,
 }
 
 Router.events.on('routeChangeStart', path => {

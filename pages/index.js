@@ -5,17 +5,12 @@ import OpacityDiv from '../containers/OpacityDiv'
 import MainPage from '../containers/MainPage'
 import LayoutPage from '../containers/LayoutPage'
 import formulaCollection from '../buisness'
+import STATUS from '../buisness/formulaStatus'
+import getDelayByPosition from '../utils/getDelayByPosition'
 
-const mainLinks = formulaCollection.getMainFormulasMetaData()
-const otherLinks = formulaCollection.getSecondaryFormulasMetaData()
-
-function getDelayByPosition(initial, i) {
-  let delay = initial
-  if (i !== 0) {
-    delay += i * 0.2
-  }
-  return delay
-}
+const mainLinks = formulaCollection.getFormulasByStatus(STATUS.MAIN)
+const secondaryLinks = formulaCollection.getFormulasByStatus(STATUS.SECONDARY)
+const bonusLinks = formulaCollection.getFormulasByStatus(STATUS.BONUS)
 
 export default function Home({ DELAY }) {
   return (
@@ -58,11 +53,26 @@ export default function Home({ DELAY }) {
 
           <OpacityDiv delay={DELAY.description2}>
             <p className={styles.description}>Или рассчитай по отдельности!</p>
+            <h3 className={styles.jumping}>&darr;</h3>
           </OpacityDiv>
 
           <div className={styles.grid}>
-            {otherLinks.map((link, i) => {
+            {secondaryLinks.map((link, i) => {
               const delay = getDelayByPosition(DELAY.cards, i)
+              return (
+                <AnimatedLink key={i} href={link.href} delay={delay}>
+                  <h3>{link.name} &rarr;</h3>
+                  <p>{link.description}</p>
+                </AnimatedLink>
+              )
+            })}
+            <OpacityDiv delay={DELAY.bonus}>
+              <p className={styles.description}>
+                <span className={styles.jumping + ' bonus'}>🎁</span>
+              </p>
+            </OpacityDiv>
+            {bonusLinks.map((link, i) => {
+              const delay = getDelayByPosition(DELAY.bonus, i)
               return (
                 <AnimatedLink key={i} href={link.href} delay={delay}>
                   <h3>{link.name} &rarr;</h3>

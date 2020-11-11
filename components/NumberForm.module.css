@@ -1,0 +1,10 @@
+.formula {
+  margin-bottom: 1em;
+}
+.formula:not(:first-child) {
+  border-top: 1px solid black;
+}
+
+.formula h2 {
+  text-align: center;
+}

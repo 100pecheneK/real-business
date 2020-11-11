@@ -71,7 +71,6 @@ export default function UniversalFormulaForm({
   const onBaseClear = () => {
     setIsCleared(true)
   }
-
   return (
     <FormulaPage
       pageKey={options.pageKey}
@@ -82,6 +81,7 @@ export default function UniversalFormulaForm({
       <div className={formulaStyles.form}>
         {fields.map(field => (
           <NumberForm
+            formulaTitle={field.meta.name}
             key={field.meta._formulaName}
             setIsSubmitted={setIsSubmitted}
             isCleared={isCleared}
@@ -118,7 +118,10 @@ export default function UniversalFormulaForm({
             const name = Object.keys(res)[0]
             return (
               <p key={name}>
-                {description}: {res[name]}
+                {description}:{' '}
+                {typeof res[name] === 'string'
+                  ? res[name]
+                  : `${(res[name] * 100).toFixed(0)}%`}
               </p>
             )
           })}

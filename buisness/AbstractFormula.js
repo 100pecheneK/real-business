@@ -13,10 +13,6 @@ export default class AbstractFormula {
     throw new Error('Method not implemented')
   }
 
-  validate() {
-    throw new Error('Method not implemented')
-  }
-
   getFields() {
     throw new Error('Method not implemented')
   }
@@ -37,8 +33,17 @@ export default class AbstractFormula {
       fields: this.getFields(),
     }
   }
-
   getResult() {
     return this.result
+  }
+  validate(fields) {
+    let fieldsCount = 0
+    for (const _ in fields) {
+      fieldsCount++
+    }
+    if (fieldsCount === this.getFields().length) {
+      return this
+    }
+    throw new Error('Не все поля заполнены!')
   }
 }
