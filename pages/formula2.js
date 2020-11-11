@@ -2,7 +2,7 @@ import React from 'react'
 import UniversalFormulaForm from '../forms/UniversalFormulaForm/UniversalFormulaForm'
 import formulaCollection from '../buisness'
 
-const F = formulaCollection.formuls['diff']
+const F = formulaCollection.getFormulaByName('diff')
 const fields = [new F().getMetaAndFields()]
 
 export default function Formula2() {
