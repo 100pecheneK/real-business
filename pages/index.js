@@ -26,7 +26,7 @@ export default function Home({ DELAY }) {
 
           <OpacityDiv delay={DELAY.description}>
             <p className={styles.description}>
-              Начни улучшать свой бизнес уже сегодня! <br /> Рассчетай
+              Начни улучшать свой бизнес уже сегодня! <br /> Рассчитай
               рентабельность бизнеса или получи полный отчёт!
             </p>
           </OpacityDiv>
