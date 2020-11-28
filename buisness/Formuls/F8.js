@@ -5,7 +5,7 @@ export default class F8 extends AbstractFormula {
   static _status = STATUS.SECONDARY
   static _formulaName = 'F8'
   static href = 'f8'
-  static name = 'Основных средств'
+  static name = 'Основные средства'
   static description =
     'Рассчитайте рентабельность основных средств для повышения рентабельности'
 
