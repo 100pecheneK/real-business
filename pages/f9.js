@@ -8,6 +8,8 @@ const fields = [new F().getMetaAndFields()]
 export default function Formula9() {
   return (
     <UniversalFormulaForm
+      image={F.image}
+      text={F.text}
       header={F.name}
       description={F.description}
       fields={fields}

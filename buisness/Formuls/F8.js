@@ -8,7 +8,7 @@ export default class F8 extends AbstractFormula {
   static href = 'f8'
   static name = 'Основные средства'
 
-  static image = { src: '7.jpg', width: '500em', height: '450em' }
+  static image = { src: '7.jpg', width: '700em', height: '450em' }
   static text = [
     textPrerender.p(
       'Коэффициент рентабельности основных средств высчитывают для оценки эффекта от их привлечения в экономику предприятия. В понятие «основные средства» входит весь перечень задействованных в производственном процессе объектов, не изменяющих своих первоначальных габаритов. Проще говоря, речь идет:'
