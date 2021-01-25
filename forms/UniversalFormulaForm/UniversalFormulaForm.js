@@ -7,6 +7,9 @@ import AnimatedLink from '../../containers/AnimatedLink'
 import formulaCollection from '../../buisness'
 import formulaStyles from './UniversalFormulaForm.module.css'
 import isEmpty from '../../utils/isObjectEmpty'
+import Image from 'next/image'
+import RenderText from '../../components/RenderText'
+import OpacityDiv from '../../containers/OpacityDiv'
 
 const initialStateTemplate = field => {
   return { [field.meta._formulaName]: 0 }
@@ -23,6 +26,8 @@ function calculate(formulaName, data) {
 }
 
 export default function UniversalFormulaForm({
+  image,
+  text,
   header,
   description,
   fields,
@@ -73,6 +78,8 @@ export default function UniversalFormulaForm({
   }
   return (
     <FormulaPage
+      text={text}
+      image={image}
       pageKey={options.pageKey}
       title={options.title}
       header={header}
@@ -130,14 +137,56 @@ export default function UniversalFormulaForm({
     </FormulaPage>
   )
 }
-// TODO: Переместить в отдельные файлы всё, что ниже ->
-function FormulaPage({ children, pageKey, title, header, description }) {
+
+function MoreInfo({ image, title, text }) {
+  return (
+    <>
+      {image && (
+        <div style={{ textAlign: 'center' }}>
+          <Image
+            src={`/images/${image.src}`}
+            width={image.width}
+            height={image.height}
+            alt={title}
+          />
+        </div>
+      )}
+      {text && <RenderText text={text} />}
+    </>
+  )
+}
+
+function FormulaPage({
+  children,
+  pageKey,
+  title,
+  header,
+  description,
+  image,
+  text,
+}) {
+  const [isMore, setIsMore] = useState(false)
   return (
     <SecondPage pageKey={pageKey}>
       <LayoutPage title={title}>
         <Main>
           <Title title={header} />
           <Description description={description} />
+          {image || text ? (
+            <>
+              <p
+                style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                onClick={() => setIsMore(p => !p)}
+              >
+                Подробнее
+              </p>
+              {isMore && (
+                <OpacityDiv>
+                  <MoreInfo title={title} image={image} text={text} />
+                </OpacityDiv>
+              )}
+            </>
+          ) : null}
           {children}
           <LinkToHome />
         </Main>

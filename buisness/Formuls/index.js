@@ -1,6 +1,3 @@
-import Formula1 from './Formula1'
-import Formula2 from './Formula2'
-import Business from './Business'
 import F1 from './F1'
 import F2 from './F2'
 import F3 from './F3'
