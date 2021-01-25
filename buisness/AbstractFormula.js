@@ -3,7 +3,7 @@ export default class AbstractFormula {
   static _formulaName = '_formulaName not implemented'
   static href = 'href not implemented'
   static name = 'name not implemented'
-  static description = 'description not implemented'
+  static description = ''
 
   constructor() {
     this.result = 0

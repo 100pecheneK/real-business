@@ -68,6 +68,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
+  width: 100%;
 }
 
 .card {
@@ -137,6 +138,18 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5em;
+}
+@media screen and (max-width: 300px) {
+  .input-container {
+    display: block;
+  }
+  .label {
+    display: block;
+    margin-bottom: 1em;
+  }
+  .input {
+    width: 100%;
+  }
 }
 
 .input {

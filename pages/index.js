@@ -41,13 +41,12 @@ export default function Home({ DELAY }) {
                   classes={styles.active}
                 >
                   <h3>{link.name} &rarr;</h3>
-                  <p>{link.description}</p>
+                  {link.description && <p>{link.description}</p>}
                 </AnimatedLink>
               )
             })}
             <AnimatedLink href={'/all'} delay={DELAY.mainCard2}>
               <h3>Полный отчёт &rarr;</h3>
-              <p>Детальный рассчёт ренатабельностей</p>
             </AnimatedLink>
           </div>
 
@@ -62,21 +61,16 @@ export default function Home({ DELAY }) {
               return (
                 <AnimatedLink key={i} href={link.href} delay={delay}>
                   <h3>{link.name} &rarr;</h3>
-                  <p>{link.description}</p>
+                  {link.description && <p>{link.description}</p>}
                 </AnimatedLink>
               )
             })}
-            <OpacityDiv delay={DELAY.bonus}>
-              <p className={styles.description}>
-                <span className={styles.jumping + ' bonus'}>🎁</span>
-              </p>
-            </OpacityDiv>
             {bonusLinks.map((link, i) => {
               const delay = getDelayByPosition(DELAY.bonus, i)
               return (
                 <AnimatedLink key={i} href={link.href} delay={delay}>
                   <h3>{link.name} &rarr;</h3>
-                  <p>{link.description}</p>
+                  {link.description && <p>{link.description}</p>}
                 </AnimatedLink>
               )
             })}

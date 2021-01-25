@@ -26,7 +26,8 @@ body.dark-mode {
   filter: invert(100%);
   transition: 1s ease;
 }
-body.dark-mode .bonus {
+body.dark-mode .bonus,
+body.dark-mode img {
   filter: invert(100%);
 }
 
