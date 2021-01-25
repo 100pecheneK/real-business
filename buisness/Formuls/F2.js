@@ -7,7 +7,7 @@ export default class F2 extends AbstractFormula {
   static _formulaName = 'F2'
   static href = 'f2'
   static name = 'Продажи'
-  static image = { src: '1.jpg', width: '500em', height: '450em' }
+  static image = { src: '1.jpg', width: '700em', height: '450em' }
   static text = [
     textPrerender.p(
       'Рентабельность продаж – это соотношение доходов, вырученных от реализации товаров либо услуг, и общей прибыли компании. Этот метод применяют для определения доли прибыли, приходящейся на каждый рубль, полученный предпринимателем.'

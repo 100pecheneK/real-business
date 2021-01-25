@@ -139,23 +139,37 @@ export default function UniversalFormulaForm({
 }
 
 function MoreInfo({ image, title, text }) {
+  const [isMore, setIsMore] = useState(false)
+  if (!image && !text) {
+    console.log(image, text)
+    return null
+  }
   return (
     <>
-      {image && (
-        <div style={{ textAlign: 'center' }}>
-          <Image
-            src={`/images/${image.src}`}
-            width={image.width}
-            height={image.height}
-            alt={title}
-          />
-        </div>
+      <p
+        style={{ cursor: 'pointer', textDecoration: 'underline' }}
+        onClick={() => setIsMore(p => !p)}
+      >
+        Подробнее
+      </p>
+      {isMore && (
+        <OpacityDiv>
+          {image && (
+            <div style={{ textAlign: 'center' }}>
+              <Image
+                src={`/images/${image.src}`}
+                width={image.width}
+                height={image.height}
+                alt={title}
+              />
+            </div>
+          )}
+          {text && <RenderText text={text} />}
+        </OpacityDiv>
       )}
-      {text && <RenderText text={text} />}
     </>
   )
 }
-
 function FormulaPage({
   children,
   pageKey,
@@ -165,28 +179,13 @@ function FormulaPage({
   image,
   text,
 }) {
-  const [isMore, setIsMore] = useState(false)
   return (
     <SecondPage pageKey={pageKey}>
       <LayoutPage title={title}>
         <Main>
           <Title title={header} />
           <Description description={description} />
-          {image || text ? (
-            <>
-              <p
-                style={{ cursor: 'pointer', textDecoration: 'underline' }}
-                onClick={() => setIsMore(p => !p)}
-              >
-                Подробнее
-              </p>
-              {isMore && (
-                <OpacityDiv>
-                  <MoreInfo title={title} image={image} text={text} />
-                </OpacityDiv>
-              )}
-            </>
-          ) : null}
+          <MoreInfo image={image} text={text} title={title} />
           {children}
           <LinkToHome />
         </Main>
