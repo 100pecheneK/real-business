@@ -40,13 +40,15 @@ export default function Home({ DELAY }) {
                   delay={DELAY.mainCard1}
                   classes={styles.active}
                 >
-                  <h3>{link.name} &rarr;</h3>
+                  <h3>{link.name}</h3>
+                  <h3 className={styles.arrowr}>&rarr;</h3>
                   {link.description && <p>{link.description}</p>}
                 </AnimatedLink>
               )
             })}
             <AnimatedLink href={'/all'} delay={DELAY.mainCard2}>
-              <h3>Полный отчёт &rarr;</h3>
+              <h3>Полный отчёт</h3>
+               <h3 className={styles.arrowr}>&rarr;</h3>
             </AnimatedLink>
           </div>
 
@@ -60,8 +62,9 @@ export default function Home({ DELAY }) {
               const delay = getDelayByPosition(DELAY.cards, i)
               return (
                 <AnimatedLink key={i} href={link.href} delay={delay}>
-                  <h3>{link.name} &rarr;</h3>
-                  {link.description && <p>{link.description}</p>}
+                  <h3>{link.name}</h3>
+                 <h3 className={styles.arrowr}>&rarr;</h3>
+                 {link.description && <p>{link.description}</p>}
                 </AnimatedLink>
               )
             })}

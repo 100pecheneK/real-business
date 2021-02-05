@@ -4,7 +4,6 @@ import formulaCollection from '../buisness'
 
 const F = formulaCollection.getFormulaByName('F4')
 const fields = [new F().getMetaAndFields()]
-
 export default function Formula4() {
   return (
     <UniversalFormulaForm
